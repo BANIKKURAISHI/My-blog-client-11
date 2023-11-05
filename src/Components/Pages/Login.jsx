@@ -1,9 +1,13 @@
+import Navbar from "../Navbar&&Footer/Navbar";
 
 
 const Login = () => {
     return (
+      
         <div>
-          <h1>This is log in page</h1>  
+          <Navbar></Navbar>
+          
+          
         </div>
     );
 };
