@@ -1,14 +1,30 @@
 import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types'; 
 import Contain from "../Hooks/UI/Contain";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useAuth from "../Hooks/useAuth";
 
 const Navbar = ({children}) => {
-  const navItem=<>
+  const {user,logOut}=useAuth()
+  const logOutButton=()=>{
+    logOut()
+    .then(()=>{
+      toast('logout successful')
+    })
+    .catch((error)=>{
+      toast(error.code)
+    })
+  }
+ const navItem=<>
+ {user?.email? <div>
+ <button onClick={logOutButton} className="btn btn-sm btn-outline btn-info">Log out</button>
+ </div>:
+ <div className="">
   <NavLink
   to="/login"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning" : "btn btn-sm btn-outline btn-info"
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
   }
 >
   Login
@@ -21,11 +37,7 @@ const Navbar = ({children}) => {
 >
   SingUp
 </NavLink>
-<button className="btn btn-sm btn-outline btn-info">Log out</button>
-
-
-
-  </>
+</div>} </>
   return (
     <Contain>
     <div className="drawer">
@@ -55,6 +67,7 @@ const Navbar = ({children}) => {
     </ul>
   </div>
 </div>
+<ToastContainer />
 </Contain>
   )
 };
