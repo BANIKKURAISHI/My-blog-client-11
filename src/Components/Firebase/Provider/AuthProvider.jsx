@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { PropTypes } from 'prop-types';
-import {GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import auth from './../Firebase.config';
 export const AuthContext =createContext()
 
@@ -19,7 +19,17 @@ const createUser=(email,password)=>{
     return createUserWithEmailAndPassword(auth,email,password)
 }
 
-const AuthInfo ={googleButton,createUser,loading}
+// user login 
+const login=(email,password)=>{
+    setLoading(true) 
+    return signInWithEmailAndPassword(auth,email,password)
+}
+
+// state on auth change 
+
+
+
+const AuthInfo ={googleButton,createUser,login,loading}
     return (
         <AuthContext.Provider  value={AuthInfo}>
            {children} 

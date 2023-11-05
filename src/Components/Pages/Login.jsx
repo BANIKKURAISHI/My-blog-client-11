@@ -5,9 +5,12 @@ import { FcGoogle } from 'react-icons/fc'
 import useAuth from "../Hooks/useAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 const Login = () => {
-  const {googleButton}=useAuth()
+  const {googleButton,login}=useAuth()
+  const [email,setEmail]=useState()
+  const [password,setPassword]=useState()
 ///google log in button 
 const googleLoginButton=()=>{
   googleButton()
@@ -21,6 +24,21 @@ const googleLoginButton=()=>{
     toast(errorMessage)
   })
 }
+//user log in 
+const loginButton=async(e)=>{
+  e.preventDefault()
+  try{
+    await login(email,password)
+    toast('Log in successful')
+    }
+    catch(error){
+      const errorMessage=error.code
+      toast(errorMessage)
+
+    }
+
+}
+
     return (
       <Contain>
         <div className="">
@@ -36,7 +54,7 @@ const googleLoginButton=()=>{
           <div className=" text-white lg:mt-3">
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
-            <form  className="card-body -mx-8 lg:py-10 ">
+            <form  onSubmit={loginButton} className="card-body -mx-8 lg:py-10 ">
             
               <div className="form-control text-xl  text-white font-normal">
                 <label className="label">
@@ -47,12 +65,12 @@ const googleLoginButton=()=>{
                   name="email"
                   placeholder="Enter your email"
                   className="input input-bordered"
-                  // onBlur={(e)=>setEmail(e.target.value)}
+                  onBlur={(e)=>{setEmail(e.target.value)}}
                   required
                 />
               </div>
               
-              <div className="form-control text-xl text-white font-normal">
+              <div className="form-control text-xl  font-normal">
                 <label className="label ">
                   <span className="label-text text-white">Password</span>
                 </label>
@@ -61,7 +79,7 @@ const googleLoginButton=()=>{
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
-                  // onBlur={(e)=>setPassword(e.target.value)}
+                  onBlur={(e)=>setPassword(e.target.value)}
                   required
                 />
               </div>
