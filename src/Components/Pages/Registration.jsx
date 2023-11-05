@@ -1,9 +1,33 @@
 import { Link } from "react-router-dom";
 import Contain from "../Hooks/UI/Contain";
 import Navbar from "../Navbar&&Footer/Navbar";
+import useAuth from "../Hooks/useAuth";
+import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Registration = () => {
+  const {createUser}=useAuth()
+  const [name,setName]=useState()
+  const [email,setEmail]=useState()
+  const [photo,setPhoto]=useState()
+  const [password,setPassword]=useState()
+  const all ={name,email,password,photo}
+  
+  const createUserButton=async(e)=>{
+    e.preventDefault()
+    console.log(all)
+    try{
+    await createUser(email,password)
+    toast('Your account create is successful')
+    }
+    catch(error){
+      const errorMessage=error.code
+      toast(errorMessage)
+
+    }
+  }
     return (
         <Contain>
         <Navbar></Navbar>
@@ -16,7 +40,7 @@ const Registration = () => {
           <div className="mx-6 lg:mt-8">
             <h1 className="text-5xl text-white font-bold">Create An Account</h1>
           </div>
-            <form className="card-body text-xl font-normal">
+            <form onSubmit={createUserButton} className="card-body text-xl font-normal">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white">Name</span>
@@ -26,7 +50,7 @@ const Registration = () => {
                   name="name"
                   placeholder="Enter your name"
                   className="input input-bordered"
-                //   onBlur={(e)=>{setName(e.target.value)}}
+                  onBlur={(e)=>{setName(e.target.value)}}
                   required
                 />
               </div>
@@ -39,7 +63,7 @@ const Registration = () => {
                   name="email"
                   placeholder="Enter your email"
                   className="input input-bordered"
-                //   onBlur={(e)=>{setEmail(e.target.value)}}
+                  onBlur={(e)=>{setEmail(e.target.value)}}
                   required
                 />
               </div>
@@ -52,7 +76,7 @@ const Registration = () => {
                   name="photo"
                   placeholder="Enter your photo"
                   className="input input-bordered"
-                //   onBlur={(e)=>{setPhoto(e.target.value)}}
+                  onBlur={(e)=>{setPhoto(e.target.value)}}
                   required
                 />
               </div>
@@ -65,7 +89,7 @@ const Registration = () => {
                   name="password"
                   placeholder="Enter your password"
                   className="input input-bordered"
-                //   onBlur={(e)=>{setPassword(e.target.value)}}
+                  onBlur={(e)=>{setPassword(e.target.value)}}
                   required
                 />
               </div>
@@ -76,6 +100,7 @@ const Registration = () => {
                 Already have an account ?<Link to='/login' className="text-white text-2xl">Log in </Link>
               </div>
             </form>
+           
           </div>
         </div>
         <div className="w-[400px] mx-3 lg:w-[450px]">
@@ -84,6 +109,7 @@ const Registration = () => {
       </div>
       </div>
       </div>
+      <ToastContainer />
       </Contain>
    
    
