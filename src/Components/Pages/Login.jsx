@@ -2,8 +2,25 @@ import { Link } from "react-router-dom";
 import Navbar from "../Navbar&&Footer/Navbar";
 import Contain from "../Hooks/UI/Contain";
 import { FcGoogle } from 'react-icons/fc'
+import useAuth from "../Hooks/useAuth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const {googleButton}=useAuth()
+///google log in button 
+const googleLoginButton=()=>{
+  googleButton()
+  .then(result=>{
+    const user=result.user 
+    console.log(user)
+    toast('Logged in successful ')
+  })
+  .catch(error=>{
+    const errorMessage = error.message;
+    toast(errorMessage)
+  })
+}
     return (
       <Contain>
         <div className="">
@@ -64,14 +81,14 @@ const Login = () => {
                  < hr className="border-white "/>
               </div>
               
-              <button  className="btn btn-primary  border-white bg-blue-500 text-white  w-full mt-3 p-3 rounded-md text-xl flex flex-row"><span className="my-1 lg:ml-4 mr-2"><FcGoogle></FcGoogle></span><span >Login with Google</span></button>
+              <button onClick={googleLoginButton}  className="btn btn-primary  border-white bg-blue-500 text-white  w-full mt-3 p-3 rounded-md text-xl flex flex-row"><span className="my-1 lg:ml-4 mr-2"><FcGoogle></FcGoogle></span><span >Login with Google</span></button>
             </form>
             
             
-            
+            <ToastContainer />
           </div>
         </div>
-        <div className="w-[400px] mx-2 lg:w-[450px]">
+        <div className="w-[400px] mx-2 lg:w-[450px] bg-inherit">
            <img className=" h-[580px] w-[390px] lg:w-[450px] mt-4  rounded-2xl" src="https://i.ibb.co/2KXh5Tj/treehouse-built-around-giant-book-generative-ai-208978-1762.jpg" alt=""  />
         </div>
        </div>
