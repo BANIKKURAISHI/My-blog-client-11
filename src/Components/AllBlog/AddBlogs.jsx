@@ -2,6 +2,9 @@ import { useState } from "react";
 import Contain from "../Hooks/UI/Contain";
 import Navbar from "../Navbar&&Footer/Navbar";
 
+import axios from "axios";
+import Swal from "sweetalert2";
+
 const AddBlogs = () => {
 //title,image,short_description,category,full_description,author,date_published,source
  const [title,setTitle]=useState()
@@ -13,8 +16,23 @@ const AddBlogs = () => {
  const [date_published,setDate_published]=useState()
  const [source,setSource]=useState()
 
- const addBlogButton=()=>{
-    console.log(title,image,short_description,category,full_description,author,date_published,source)
+ const addBlogButton=(e)=>{
+    e.preventDefault()
+   const add={title,image,short_description,category,full_description,author,date_published,source}
+   try {
+    axios.post('http://localhost:5000/blogs',add)
+    .then(res=>{
+       if(res.data){
+        Swal.fire({
+            title: 'Success!',
+            text: 'Your blog is success fully added',
+            icon: 'success',
+            confirmButtonText: 'Thank You '
+          })}
+    })
+    } catch (error) {
+    console.log(error)
+    }
  }
 
     return (
