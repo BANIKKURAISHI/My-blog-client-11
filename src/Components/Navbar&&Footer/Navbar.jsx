@@ -17,8 +17,42 @@ const Navbar = ({children}) => {
     })
   }
  const navItem=<>
- {user?.email? <div>
- <button onClick={logOutButton} className="btn btn-sm btn-outline btn-info">Log out</button>
+   <NavLink
+  to="/"
+  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
+  }
+>
+  Home
+</NavLink>
+  <NavLink
+  to="/addBlog"
+  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
+  }
+>
+  Add Blog
+</NavLink>
+
+  <NavLink
+  to="/allBlogs"
+  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
+  }
+>
+  All Blog
+</NavLink>
+<NavLink
+  to="/wishlist"
+  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
+  }
+>
+ Wishlist
+</NavLink>
+ {user?.email? <div className="">
+  <img  src={user.photoURL} className="w-16 h-16 rounded-full mb-2 text-center lg:mr-4"  alt="" />
+ <button onClick={logOutButton} className=" btn btn-sm btn-outline btn-info lg:-mx-2">Log out</button>
  </div>:
  <div className="">
   <NavLink

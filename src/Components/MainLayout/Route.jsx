@@ -4,6 +4,7 @@ import Error from "./Error";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
 import { Home } from "@mui/icons-material";
+import AllBlogs from "../AllBlog/AllBlogs";
 
 
 
@@ -12,7 +13,7 @@ path:"/",
 element:<Main></Main>,
 errorElement:<Error></Error>,
 children:[{
-    index:true,
+    path:'/',
     element:<Home></Home>
 }]
 
@@ -25,6 +26,11 @@ element:<Login></Login>
     path:'/singUp',
     element:<Registration></Registration>
 },
+{
+    path:'/allBlogs',
+    element:<AllBlogs></AllBlogs>,
+    loader:()=>fetch('http://localhost:5000/blogs')
+}
 
 
 ])

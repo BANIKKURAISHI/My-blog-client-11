@@ -5,6 +5,7 @@ import useAuth from "../Hooks/useAuth";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { updateProfile } from "firebase/auth";
 
 
 const Registration = () => {
@@ -15,18 +16,34 @@ const Registration = () => {
   const [password,setPassword]=useState()
   const all ={name,email,password,photo}
   
-  const createUserButton=async(e)=>{
+  const createUserButton=(e)=>{
     e.preventDefault()
     console.log(all)
-    try{
-    await createUser(email,password)
-    toast('Your account create is successful')
-    }
-    catch(error){
+    createUser(email,password)
+    .then(result=>{
+      toast('Your account create is successful')
+    updateProfile(result.user,{
+      displayName:name, photoURL:photo
+    })
+    .then(() => {
+      toast('Profile update ')
+    })
+    })
+    .catch((error)=>{
       const errorMessage=error.code
       toast(errorMessage)
+    })
+      
+    
+    
+  
+   
+   
 
-    }
+
+    
+    
+    
   }
     return (
         <Contain>
