@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Navbar&&Footer/Navbar";
 import Banner from "../Pages/Banner";
 import News from "../Pages/News";
+import Contain from "../Hooks/UI/Contain";
+
+
 
 
 
@@ -12,10 +15,15 @@ const Main = () => {
             <Navbar></Navbar>
             <Banner></Banner>
             <News></News>
+         
             
-            
-           <h1>This is my main Route</h1> 
-           <Outlet></Outlet>
+           
+           <Contain>
+            <div className="min-h-screen">
+            <Outlet></Outlet>
+            </div>
+           
+           </Contain>
         </div>
     );
 };

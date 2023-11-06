@@ -3,9 +3,11 @@ import Main from "./Main";
 import Error from "./Error";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
-import { Home } from "@mui/icons-material";
+
 import AllBlogs from "../AllBlog/AllBlogs";
 import AddBlogs from "../AllBlog/AddBlogs";
+import BlogDetails from "../AllBlog/BlogDetails";
+import Home from "../Pages/Home";
 
 
 
@@ -14,10 +16,14 @@ path:"/",
 element:<Main></Main>,
 errorElement:<Error></Error>,
 children:[{
-    path:'/',
+    index:true,
     element:<Home></Home>
 }]
 
+},
+{
+    path:'/',
+    element:<Home></Home>
 },
 {
 path:'/login',
@@ -35,6 +41,11 @@ element:<Login></Login>
 {
     path:'/addBlog',
     element:<AddBlogs></AddBlogs>
+},
+{
+    path:'/blogs/:id',
+    element:<BlogDetails></BlogDetails>,
+    loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
 },
 
 

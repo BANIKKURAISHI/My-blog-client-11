@@ -1,9 +1,17 @@
 import { PropTypes } from "prop-types";
 import Contain from "../Hooks/UI/Contain";
+import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
+
 
 
 const Blogs = ({ load }) => {
+    const {user}=useAuth()
+    const email=user?.email
   const {
+    _id,
     title,
     image,
     short_description,
@@ -12,11 +20,28 @@ const Blogs = ({ load }) => {
     date_published,
  
   } = load;
+ const wishListButton=()=>{
+    const list ={email, title, image,short_description,category, author,date_published,}
+   try{ axios.post('http://localhost:5000/popular',list)
+   .then(res=>{
+    if(res.data){
+     Swal.fire({
+         title: 'Success!',
+         text: 'Your blog is success fully added',
+         icon: 'success',
+         confirmButtonText: 'Thank You '
+       })}
+ })
+ } catch (error) {
+ console.log(error)
+ }
+ }
+
+
+
   return (
   <Contain>
-   
-      <div className="card w-[1200px]  card-side bg-base-100 shadow-md">
-       
+   <div className="card w-[1200px]  card-side bg-base-100 shadow-md">
         <figure>
           <img
             src={image}
@@ -34,13 +59,10 @@ const Blogs = ({ load }) => {
                 <h1 className="text-xl ml-2 font-medium">{author}</h1>
                 <p className="my-1 ml-2">Published-{date_published}</p>
             </div>
-            
-            
-           
-          </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-outline btn-info">DETAILS</button>
-            <button className="btn btn-outline btn-info">WISHLIST</button>
+             </div>
+           <div className="card-actions justify-end">
+           <Link to={`/blogs/${_id}`}><button className="btn btn-outline btn-info">DETAILS</button></Link>  
+           <button onClick={wishListButton} className="btn btn-outline btn-info">WISHLIST</button> 
           
           </div>
         </div>

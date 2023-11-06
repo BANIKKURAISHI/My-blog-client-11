@@ -91,7 +91,7 @@ const AddBlogs = () => {
                 <label className="label">
                   <span className="label-text text-white">Category</span>
                 </label>
-                <input
+                 <input
                   type="text"
                   name="category"
                   placeholder="Enter your category"
@@ -99,7 +99,8 @@ const AddBlogs = () => {
                   className="input input-bordered"
                   onBlur={(e)=>{setCategory(e.target.value)}}
                   required
-                />
+                /> 
+               
               </div>
               <div className="form-control text-xl font-normal">
                 <label className="label">

@@ -20,7 +20,7 @@ const Navbar = ({children}) => {
    <NavLink
   to="/"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2" : "btn btn-sm btn-outline btn-info mx-2"
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline btn-warning mx-2":"btn btn-sm btn-outline btn-info mx-2"
   }
 >
   Home
