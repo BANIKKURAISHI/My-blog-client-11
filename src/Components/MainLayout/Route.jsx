@@ -8,6 +8,7 @@ import AllBlogs from "../AllBlog/AllBlogs";
 import AddBlogs from "../AllBlog/AddBlogs";
 import BlogDetails from "../AllBlog/BlogDetails";
 import Home from "../Pages/Home";
+import WishList from "../AllBlog/WishList";
 
 
 
@@ -46,6 +47,11 @@ element:<Login></Login>
     path:'/blogs/:id',
     element:<BlogDetails></BlogDetails>,
     loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+},
+{
+    path:'/wishlist',
+    element:<WishList></WishList>,
+    loader:()=>fetch('http://localhost:5000/popular')
 },
 
 

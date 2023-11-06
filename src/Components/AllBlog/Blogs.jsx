@@ -12,6 +12,7 @@ const Blogs = ({ load }) => {
     const email=user?.email
   const {
     _id,
+    full_description,
     title,
     image,
     short_description,
@@ -21,7 +22,7 @@ const Blogs = ({ load }) => {
  
   } = load;
  const wishListButton=()=>{
-    const list ={email, title, image,short_description,category, author,date_published,}
+    const list ={email, title, image,short_description,full_description,category, author,date_published,}
    try{ axios.post('http://localhost:5000/popular',list)
    .then(res=>{
     if(res.data){
