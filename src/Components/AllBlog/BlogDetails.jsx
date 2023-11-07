@@ -20,7 +20,7 @@ const BlogDetails = () => {
     <Navbar></Navbar>
 
    
-   <div className="card w-[1200px] mx-auto my-20  card-side bg-base-100 shadow-md">
+   <div className="card w-[1200px]  mx-auto my-20  card-side bg-base-100 shadow-md">
     
      <figure>
        <img
@@ -53,16 +53,16 @@ const BlogDetails = () => {
      </div>
     
    </div>
-   <div>
-    <h1>Comment Section</h1>
-    <p>Comment here What you want to say </p>
+   <div className=" card rounded-sm shadow-xl mb-20">
+    
+    <p className="text-2xl mx-5 my-5">Comment here What you want to say </p>
     <div className="flex flex-row justify-between">
   <div>
   </div>
-  <form >
-        <textarea className="border-2 mx-20 border-emerald-200" name="" id="" cols="40" rows="10"></textarea>
-        <button className="btn btn-sm btn-outline btn-info">Comment</button>
-    </form>
+  <form className="flex flex-col mb-5">
+        <textarea className="border-2 mx-20 " name="comments" id="" cols="60" rows="10"></textarea>
+        <button className="btn w-96 mx-32 btn-sm btn-outline btn-ghost">Comment</button>
+  </form>
    </div>
    </div>
    

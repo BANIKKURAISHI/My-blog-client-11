@@ -41,7 +41,7 @@ const WishList = () => {
                     'Your file has been deleted.',
                     'success'
                   )
-                  const deleteItem=load.filter(item=>item.id!==id)
+                  const deleteItem=load.filter(item=>item._id!==id)
                   setBlogs(deleteItem)
                 
             }
