@@ -9,6 +9,7 @@ import AddBlogs from "../AllBlog/AddBlogs";
 import BlogDetails from "../AllBlog/BlogDetails";
 import Home from "../Pages/Home";
 import WishList from "../AllBlog/WishList";
+import Update from "../AllBlog/Update";
 
 
 
@@ -41,7 +42,8 @@ element:<Login></Login>
 },
 {
     path:'/addBlog',
-    element:<AddBlogs></AddBlogs>
+    element:<AddBlogs></AddBlogs>,
+    loader:()=>fetch('http://localhost:5000/blogs')
 },
 {
     path:'/blogs/:id',
@@ -53,6 +55,11 @@ element:<Login></Login>
     element:<WishList></WishList>,
     loader:()=>fetch('http://localhost:5000/popular')
 },
+{
+    path:'/update/:id',
+    element:<Update></Update>,
+    loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+}
 
 
 ])

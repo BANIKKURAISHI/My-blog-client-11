@@ -4,8 +4,10 @@ import Navbar from "../Navbar&&Footer/Navbar";
 
 import axios from "axios";
 import Swal from "sweetalert2";
+import {useLoaderData } from "react-router-dom";
 
 const AddBlogs = () => {
+  const data=useLoaderData()
 //title,image,short_description,category,full_description,author,date_published,source
  const [title,setTitle]=useState()
  const [image,setImage]=useState()
@@ -18,8 +20,9 @@ const AddBlogs = () => {
 
  const addBlogButton=(e)=>{
     e.preventDefault()
-   const add={title,image,short_description,category,full_description,author,date_published,source}
-   try {
+    const add={title,image,short_description,category,full_description,author,date_published,source}
+    console.log(add)
+     try {
     axios.post('http://localhost:5000/blogs',add)
     .then(res=>{
        if(res.data){
@@ -87,22 +90,21 @@ const AddBlogs = () => {
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text text-white">Category</span>
-                </label>
-                 <input
-                  type="text"
-                  name="category"
-                  placeholder="Enter your category"
-           
-                  className="input input-bordered"
-                  onBlur={(e)=>{setCategory(e.target.value)}}
-                  required
-                /> 
-               
-              </div>
-              <div className="form-control text-xl font-normal">
+            <label className="label">
+            <span className="label-text text-white">Category</span>
+            </label>
+             
+            <select  className="input input-bordered"
+             onBlur={(e)=>{setCategory(e.target.value)}}
+             required
+             name="" id="">
+              {
+                data.map(category=><option defaultValue={category.category} key={category._id}>
+                  {category.category}
+                </option>)
+              }
+            </select> 
+             <div className="form-control text-xl font-normal">
                 <label className="label">
                   <span className="label-text text-white">Full Description</span>
                 </label>
@@ -161,8 +163,9 @@ const AddBlogs = () => {
               <div className="form-control mt-6">
                 <button className="btn bg-blue-500 text-white">ADD BLOG</button>
               </div>
-              
+             
             </form>  
+              
         </div>
         </div>
         </div>

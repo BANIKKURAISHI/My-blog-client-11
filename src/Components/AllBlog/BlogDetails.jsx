@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar&&Footer/Navbar";
 import Contain from "../Hooks/UI/Contain";
 
 const BlogDetails = () => {
   const loadData = useLoaderData();
   const {
+    _id,
     title,
     image,
     short_description,
@@ -25,7 +26,7 @@ const BlogDetails = () => {
        <img
          src={image}
          alt="Movie"
-         className="w-72 h-full  rounded-s-md"
+         className="w-96 h-full  rounded-s-md"
        />
      </figure>
      <div className="card-body  ">
@@ -39,18 +40,32 @@ const BlogDetails = () => {
              <p className="my-1 ml-2">Published-{date_published}</p>
          </div>
          <h1>{full_description}</h1>
-         
+
+         <div className="card-actions justify-end ">
+         <h1> Source:{source}</h1>
+         </div>
+         <div className="mt-8">
+             <Link to={`/update/${_id}`}> <button className="btn btn-outline btn-success ">UPDATE</button></Link>    
+        </div>
         
        </div>
-       <div className="card-actions justify-end">
-        <h1>{source}</h1>
-       </div>
+       
      </div>
     
    </div>
-   <form >
-        <textarea className="border-2 mx-auto border-emerald-200" name="" id="" cols="160" rows="10"></textarea>
-     </form>
+   <div>
+    <h1>Comment Section</h1>
+    <p>Comment here What you want to say </p>
+    <div className="flex flex-row justify-between">
+  <div>
+  </div>
+  <form >
+        <textarea className="border-2 mx-20 border-emerald-200" name="" id="" cols="40" rows="10"></textarea>
+        <button className="btn btn-sm btn-outline btn-info">Comment</button>
+    </form>
+   </div>
+   </div>
+   
    </Contain>
   );
 };

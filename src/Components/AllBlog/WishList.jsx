@@ -4,10 +4,16 @@ import useAuth from '../Hooks/useAuth';
 import { useEffect, useState } from 'react';
 import Contain from '../Hooks/UI/Contain';
 import Navbar from '../Navbar&&Footer/Navbar';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { PropTypes } from 'prop-types';
+
 
 const WishList = () => {
+   
     const load =useLoaderData()
     const [blogs,setBlogs]=useState([])
+   
     const {user}=useAuth()
     const email =user?.email
     useEffect(()=>{
@@ -15,7 +21,33 @@ const WishList = () => {
     setBlogs(wishList)
     },[email,load])
 
-  const deleteWishListButton=()=>{
+  const deleteWishListButton=(id)=>{
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to Delete this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed){
+        axios.delete(`http://localhost:5000/popular/${id}`)
+        .then(res=>{
+            console.log(res.data)
+            if(res?.data?.deletedCount>0){
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                  const deleteItem=load.filter(item=>item.id!==id)
+                  setBlogs(deleteItem)
+                
+            }
+        })
+        }
+    })
 
   }
 
@@ -23,14 +55,14 @@ const WishList = () => {
     return (
         <div>
             <Navbar></Navbar>
-        <div className='mx-auto my-20'>
+        <div className='mx-auto my-20 '>
 
            
         {
             blogs.map(blog=><div key={blog._id}>
            <Contain>
-            <div className="card w-[1270px]  card-side bg-base-100 shadow-md">
-           <figure>
+            <div className="card w-[1270px] my-10  card-side bg-base-100 shadow-md">
+           <figure className='w-2/5'>
           <img
             src={blog.image}
             alt="Movie"
@@ -54,7 +86,7 @@ const WishList = () => {
              </div>
            <div className="card-actions justify-end">
            <Link to={`/popular/${blog._id}`}><button className="btn btn-outline btn-info">DETAILS</button></Link>  
-           <button onClick={deleteWishListButton} className="btn btn-outline btn-info">REMOVE</button> 
+           <button onClick={()=>deleteWishListButton(blog._id)} className="btn btn-outline btn-info">REMOVE</button> 
           
           </div>
         </div>
@@ -70,7 +102,9 @@ const WishList = () => {
         </div>
     );
 };
-
+WishList.propTypes={
+    refetch:PropTypes.hooks
+}
 export default WishList;
 //Each blog should have a title, image, short description, category, details button and
 //remove wishlist button
