@@ -7,9 +7,13 @@ import Swal from "sweetalert2";
 
 
 
+
 const Blogs = ({ load }) => {
     const {user}=useAuth()
     const email=user?.email
+   
+    
+
   const {
     _id,
     full_description,
@@ -19,10 +23,12 @@ const Blogs = ({ load }) => {
     category,
     author,
     date_published,
- 
+   
   } = load;
  const wishListButton=()=>{
-    const list ={email, title, image,short_description,full_description,category, author,date_published,}
+  
+ 
+    const list ={email, title, image,short_description,full_description,category, author,date_published}
    try{ axios.post('http://localhost:5000/popular',list)
    .then(res=>{
     if(res.data){
@@ -35,6 +41,7 @@ const Blogs = ({ load }) => {
  })
  } catch (error) {
  console.log(error)
+
  }
  }
 

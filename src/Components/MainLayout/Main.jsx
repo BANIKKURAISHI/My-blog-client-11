@@ -4,6 +4,7 @@ import Banner from "../Pages/Banner";
 import News from "../Pages/News";
 import Contain from "../Hooks/UI/Contain";
 import NewsLater from "../Pages/NewsLater";
+import Footer from "../Navbar&&Footer/Footer";
 
 
 
@@ -25,6 +26,8 @@ const Main = () => {
             <Outlet></Outlet>
             </div>
             <NewsLater></NewsLater>
+
+            <Footer></Footer>
            </Contain>
          
         </div>

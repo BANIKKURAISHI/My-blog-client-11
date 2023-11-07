@@ -14,7 +14,7 @@ const NewsLater = () => {
 
     }
     return (
-        <div className="max-w-7xl mb-20 border items-center text-center text-white bg-indigo-400 py-5">
+        <div className="max-w-7xl border items-center text-center text-white bg-indigo-400 py-5">
         <div className="flex flex-col  lg:mx-80 ">
         <h1 className="text-5xl font-medium ">Subscribe For More!</h1>
         <p className="text-2xl">If you want to be the first to find out more about our News

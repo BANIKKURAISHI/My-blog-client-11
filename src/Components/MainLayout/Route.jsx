@@ -19,8 +19,13 @@ element:<Main></Main>,
 errorElement:<Error></Error>,
 children:[{
     index:true,
-    element:<Home></Home>
-}]
+    element:<Home></Home>,
+    loader:()=>fetch('http://localhost:5000/blog')
+},
+
+
+]
+
 
 },
 {
@@ -59,7 +64,8 @@ element:<Login></Login>
     path:'/update/:id',
     element:<Update></Update>,
     loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
-}
+},
+
 
 
 ])

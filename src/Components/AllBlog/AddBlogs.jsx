@@ -17,11 +17,20 @@ const AddBlogs = () => {
  const [author,setAuthor]=useState()
  const [date_published,setDate_published]=useState()
  const [source,setSource]=useState()
+ const [clickTime, setClickTime] = useState();
+ //console.log(clickTime)
+ 
+
 
  const addBlogButton=(e)=>{
-    e.preventDefault()
-    const add={title,image,short_description,category,full_description,author,date_published,source}
-    console.log(add)
+  const currentTime = new Date().toLocaleTimeString();
+  setClickTime(currentTime);
+  const time =clickTime
+  
+     e.preventDefault()
+   
+     const add={time,title,image,short_description,category,full_description,author,date_published,source,}
+     
      try {
     axios.post('http://localhost:5000/blogs',add)
     .then(res=>{
