@@ -3,39 +3,24 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { BiLogoInstagram } from "react-icons/bi";
 import { Link, useLoaderData } from "react-router-dom";
 
+import RecentBlog from "./RecentBlog";
+
 const Home = () => {
   const loads = useLoaderData();
   console.log(loads);
+  
+
+  
+
   //title, image, short description, category, details button and wishlist button
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="w-2/3 ">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {loads.map((load) => (
-            <div key={load._id}>
-              <div className="card w-80  h-96 my-10 bg-base-100 shadow-xl lg:w-96">
-                <figure>
-                  <img
-                    src={load.image}
-                    alt="Shoes"
-                    className="h-40 w-full"
-                  />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">
-                    {load.title}
-                    <div className="badge badge-secondary">NEW</div>
-                  </h2>
-                  <p>{load.short_description}</p>
-                
-                  <div className="badge badge-outline">{load.category}</div>
-                  <div className="card-actions justify-end">
-                    <div className="badge badge-outline">DETAILS</div>
-                    <button  className="badge badge-outline">WISHLIST</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <RecentBlog key={load._id} load={load}>
+             
+            </RecentBlog>
           ))}
         </div>
       </div>
