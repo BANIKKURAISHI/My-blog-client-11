@@ -19,6 +19,25 @@ const Registration = () => {
   const createUserButton=(e)=>{
     e.preventDefault()
     console.log(all)
+    if(password.length <6){
+      toast('You must should given valid password' )
+      return
+        }
+
+      else if (!/[A-Z0]/.test(password)){
+      toast('You must should given valid password' )
+      return 
+       }
+       else if (!/[a-z0]/.test(password)){
+        toast('You must should given valid password' )
+        return 
+         }
+      else if (!/(?=.*[!@#$%^&*()_+])/.test(password)){
+       toast('You must should given valid password' )
+       return 
+       }
+
+
     createUser(email,password)
     .then(result=>{
       toast('Your account create is successful')

@@ -56,7 +56,7 @@ const loginButton=async(e)=>{
           </div>
             <form  onSubmit={loginButton} className="card-body -mx-8 lg:py-10 ">
             
-              <div className="form-control text-xl  text-white font-normal">
+              <div className="form-control text-xl  text-black font-normal">
                 <label className="label">
                   <span className="label-text text-white">Email</span>
                 </label>
