@@ -1,9 +1,19 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar&&Footer/Navbar";
 import Contain from "../Hooks/UI/Contain";
+import useAuth from "../Hooks/useAuth";
+import { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const BlogDetails = () => {
   const loadData = useLoaderData();
+  const {user}=useAuth()
+  const currentUser=user?.email
+  const userName=user?.displayName
+  const userPhoto=user?.photoURL
+  const [comments,setComments]=useState()
+ 
   const {
     _id,
     title,
@@ -14,7 +24,23 @@ const BlogDetails = () => {
     author,
     date_published,
     source,
+    userEmail,
   } = loadData;
+const commentsButton=(e)=>{
+  e.preventDefault()
+  const allInform ={userName,userPhoto,comments}
+ axios.post('http://localhost:5000/comments',allInform)
+ .then(res=>{
+  if(res.data){
+    Swal.fire({
+        title: 'Success!',
+        text: 'Your blog is success fully added',
+        icon: 'success',
+        confirmButtonText: 'Thank You '
+      })}
+ })
+}
+
   return (
    <Contain>
     <Navbar></Navbar>
@@ -44,28 +70,33 @@ const BlogDetails = () => {
          <div className="card-actions justify-end ">
          <h1> Source:{source}</h1>
          </div>
-         <div className="mt-8">
+        {currentUser===userEmail?<><div className="mt-8">
              <Link to={`/update/${_id}`}> <button className="btn btn-outline btn-success ">UPDATE</button></Link>    
-        </div>
+        </div></> : ""}
         
        </div>
        
      </div>
     
    </div>
+   {currentUser===userEmail?<>
+   <div>
+    <h1>Comments</h1>
+   </div>
+   </>:<>
    <div className=" card rounded-sm shadow-xl mb-20">
     
     <p className="text-2xl mx-5 my-5">Comment here What you want to say </p>
     <div className="flex flex-row justify-between">
   <div>
   </div>
-  <form className="flex flex-col mb-5">
-        <textarea className="border-2 mx-20 " name="comments" id="" cols="60" rows="10"></textarea>
+  <form onSubmit={commentsButton} className="flex flex-col mb-5">
+        <textarea onBlur={(e)=>{setComments(e.target.value)}} className="border-2 mx-20 " name="comments" id="" cols="60" rows="10"></textarea>
         <button className="btn w-96 mx-32 btn-sm btn-outline btn-ghost">Comment</button>
   </form>
    </div>
    </div>
-   
+   </>}
    </Contain>
   );
 };
