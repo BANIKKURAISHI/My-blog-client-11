@@ -8,12 +8,13 @@ import Swal from "sweetalert2";
 
 
 
+
 const Blogs = ({ load }) => {
     const {user}=useAuth()
     const email=user?.email
+ 
    
-    
-
+   
   const {
     _id,
     full_description,
@@ -49,6 +50,7 @@ const Blogs = ({ load }) => {
 
   return (
   <Contain>
+    
    <div className="card w-[1200px]  card-side bg-base-100 shadow-md">
         <figure>
           <img

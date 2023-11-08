@@ -10,6 +10,13 @@ import BlogDetails from "../AllBlog/BlogDetails";
 import Home from "../Pages/Home";
 import WishList from "../AllBlog/WishList";
 import Update from "../AllBlog/Update";
+import Category from "../AllBlog/Category";
+
+import Privet from "../Firebase/Provider/Privet";
+import Feature from "../Pages/Feature";
+
+
+
 
 
 
@@ -55,17 +62,27 @@ element:<Login></Login>
     element:<BlogDetails></BlogDetails>,
     loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
 },
+ {
+    path:'/all/:category',
+    element:<Category></Category>,
+    loader:({params})=>fetch(`http://localhost:5000/all/${params.category}`)
+},
 {
     path:'/wishlist',
-    element:<WishList></WishList>,
+    element:<Privet><WishList></WishList></Privet>,
     loader:()=>fetch('http://localhost:5000/popular')
 },
 {
     path:'/update/:id',
-    element:<Update></Update>,
+    element:<Privet><Update></Update></Privet>,
     loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
 },
 
+ {
+     path:'/featuredBlogs',
+     element:<Feature></Feature>,
+     loader:()=>fetch('http://localhost:5000/details')
+}
 
 
 ])

@@ -7,8 +7,7 @@ import RecentBlog from "./RecentBlog";
 
 const Home = () => {
   const loads = useLoaderData();
-  console.log(loads);
-  
+ 
 
   
 

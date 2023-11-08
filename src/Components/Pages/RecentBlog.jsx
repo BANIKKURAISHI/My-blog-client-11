@@ -2,12 +2,13 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
 import { PropTypes } from 'prop-types';
+import { Link } from "react-router-dom";
 
 const RecentBlog = ({load}) => {
     const {user}=useAuth()
     const email=user?.email
-    const{title, image,short_description,full_description,category, author,date_published}=load
-    console.log(title)
+    const{ _id,title, image,short_description,full_description,category, author,date_published}=load
+  
      const wishListButton=()=>{
      const list ={email, title, image,short_description,full_description,category, author,date_published}
       try{ axios.post('http://localhost:5000/popular',list)
@@ -44,8 +45,8 @@ const RecentBlog = ({load}) => {
                 
                   <div className="badge badge-outline">{category}</div>
                   <div className="card-actions justify-end">
-                    <div className="badge badge-outline">DETAILS</div>
-                    <button onClick={wishListButton} className="badge badge-outline">WISHLIST</button>
+                  <Link to={`/blogs/${_id}`}><button className="btn btn-sm btn-outline btn-info ">DETAILS</button></Link> 
+                    <button onClick={wishListButton} className="btn btn-sm btn-outline btn-info">WISHLIST</button>
                   </div>
                 </div>
               </div> 

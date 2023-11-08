@@ -50,6 +50,15 @@ const Navbar = ({children}) => {
 >
  Wishlist
 </NavLink>
+<NavLink
+  to="/featuredBlogs"
+  className={({ isActive, isPending }) =>
+    isPending ? "pending" : isActive ? "btn btn-sm btn-outline  mx-2  btn-secondary mr-2" : "btn text-white btn-sm btn-outline  mx-2 mr-2"
+  }
+>
+Featured Blogs
+</NavLink>
+
  {user?.email? <div className="">
   <img  src={user.photoURL} className="w-16 h-16 rounded-full mb-2 text-center lg:mr-4"  alt="" />
  <button onClick={logOutButton} className=" btn-secondary btn btn-sm btn-outline  lg:-mx-2">Log out</button>
