@@ -1,9 +1,10 @@
 import { useLoaderData,  } from "react-router-dom";
 import Blogs from "./Blogs";
 import Navbar from "../Navbar&&Footer/Navbar";
-import Category from "./Category";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Contain from "../Hooks/UI/Contain";
 
 
 const AllBlogs = () => {
@@ -11,28 +12,49 @@ const AllBlogs = () => {
     const {category}=loadData
     const [cats,setCats]=useState([])
     const [search,setSearch]=useState('')
+    const [fil,setFil]=useState(loadData)
     useEffect(()=>{
      axios.get(`http://localhost:5000/all/${category}`)
    .then(res=>{setCats(res.data)
     console.log(cats)})
     },[category,cats])
+
+    const filterButton=(Cricket)=>{
+        const item=loadData.filter(cri=>cri.category===Cricket)
+        setFil(item)
+    }
    
     return (
         <div>
         <Navbar></Navbar>
-        <Category></Category>
+       
          
+        <Contain >
+            <div className="bg-indigo-400 py-10">
 
-         <div className="mx-auto">
+            <div className="flex flex-col   lg:mx-80 ">
+            <h1 className="text-5xl text-white font-medium ">Search Your Favorite Blog!</h1>
+           </div>
+         <div className="mx-auto text-center my-4 ">
             <form  onChange={(e)=>{setSearch(e.target.value)}}>
-                <input className="bg-green-400 " type="text" />
+                <input placeholder="Enter your title name" className="p-3 text-black bg-white  mr-2 rounded-md w-full max-w-xs" type="text" />
             </form>
          </div>
+         <div className="mx-72 my-4">
+         <button className=" btn glass text-white mx-2" onClick={()=>filterButton('Technology')}>Technology</button>
+         <button className=" btn glass text-white mx-2" onClick={()=>filterButton('Nature')}>Nature</button>
+         <button  className="btn glass text-white mx-2" onClick={()=>filterButton('Travel')}>Travel</button>
+         <button  className="btn glass text-white mx-2" onClick={()=>filterButton('Cricket')}>Cricket</button>
+         <button className="btn glass text-white mx-2" onClick={()=>filterButton('Natural Food')}>Natural food</button>
+         <button  className="btn glass text-white mx-2" onClick={()=>filterButton('Others')}>Others</button>
+         </div>
+         </div>
+         </Contain>
 
         <div className="grid grid-cols-1 gap-5 mx-auto my-20">
        {
         // loadData.map)
-        loadData.filter(data=>{
+       fil.filter(data=>{
             return data.title.toLowerCase().includes(search.toLowerCase())
         }).map(load=><Blogs key={load._id} load={load}></Blogs>)
        }  

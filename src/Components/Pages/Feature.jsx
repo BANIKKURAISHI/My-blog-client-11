@@ -1,70 +1,53 @@
 import axios from "axios";
-import MUIDataTable from "mui-datatables";
+import DataTable from "react-data-table-component";
 import { useEffect } from "react";
 import { useState } from "react";
-//import { useLoaderData } from "react-router-dom";
+
 
 const Feature = () => {
-
-    const [data, setData] = useState([]);
+  const [data, setData] = useState();
+    
+   // const {user}=useAuth()
+    console.log(data)
     useEffect(() => {
-        // Fetch data from your API or data source
-        axios.get('https://your-api-endpoint.com/data')
+      
+        axios.get('http://localhost:5000/details')
           .then(response => {
-            setData(response.data); // Assuming the data is in an array format
+            setData(response.data); 
           })
           .catch(error => {
             console.error('Error fetching data:', error);
           });
       }, [])
+      
     const columns = [
         {
-         name: "Title",
-         label: "title",
-         options: {
-          filter: true,
-          sort: true,
-         }
+         name: "Id",
+         selector:row=>row.id
         },
         {
-         name: "company",
-         label: "Company",
-         options: {
-          filter: true,
-          sort: false,
+          name: "Title",
+          selector:row=>row.title
+         },
+         {
+          name: "Category",
+          selector:row=>row.category
+         },
+          {
+          name: "Name",
+          selector:row=>row.name
+         },
+         {
+          name: "Image",
+          selector:row=>row.name
          }
-        },
-        {
-         name: "city",
-         label: "City",
-         options: {
-          filter: true,
-          sort: false,
-         }
-        },
-        {
-         name: "state",
-         label: "State",
-         options: {
-          filter: true,
-          sort: false,
-         }
-        },
-       ];
-       
       
-       
-       const options = {
-         filterType: 'checkbox',
-       };
-
+        ]
     return (
-        <MUIDataTable
-        title={"Employee List"}
-        data={data}
-        columns={columns}
-        options={options}
-      />  
+        <DataTable>
+            columns={columns}
+            data={data}
+        </DataTable>
     
     );
 };

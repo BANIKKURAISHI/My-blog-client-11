@@ -4,10 +4,11 @@ import Navbar from "../Navbar&&Footer/Navbar";
 
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useLoaderData } from "react-router-dom";
+//import {useLoaderData } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const AddBlogs = () => {
-  const data=useLoaderData()
+ // const data=useLoaderData()
 //title,image,short_description,category,full_description,author,date_published,source
  const [title,setTitle]=useState()
  const [image,setImage]=useState()
@@ -19,18 +20,22 @@ const AddBlogs = () => {
  const [source,setSource]=useState()
  const [clickTime, setClickTime] = useState();
  //console.log(clickTime)
+ const {user}=useAuth()
+ const userName=user?.displayName
+ const userEmail=user?.email 
+ const userPhoto=user?.photoURL
  
-
+//displayName:name, photoURL:photo
 
  const addBlogButton=(e)=>{
-  const currentTime = new Date().toLocaleTimeString();
-  setClickTime(currentTime);
-  const time =clickTime
+   const currentTime = new Date().toLocaleTimeString();
+   setClickTime(currentTime);
+   const time =clickTime
   
-     e.preventDefault()
+      e.preventDefault()
    
-     const add={time,title,image,short_description,category,full_description,author,date_published,source,}
-     
+     const add={time,title,image,short_description,category,full_description,author,date_published,source,userName,userEmail,userPhoto}
+     console.log(add)
      try {
     axios.post('http://localhost:5000/blogs',add)
     .then(res=>{
@@ -102,8 +107,9 @@ const AddBlogs = () => {
             <label className="label">
             <span className="label-text text-white">Category</span>
             </label>
+            <input name="category"  required onBlur={(e)=>{setCategory(e.target.value)}} type="text" className="input input-bordered" />
              
-            <select  className="input input-bordered"
+            {/* <select  className="input input-bordered"
              onBlur={(e)=>{setCategory(e.target.value)}}
              required
              name="" id="">
@@ -112,7 +118,7 @@ const AddBlogs = () => {
                   {category.category}
                 </option>)
               }
-            </select> 
+            </select>  */}
              <div className="form-control text-xl font-normal">
                 <label className="label">
                   <span className="label-text text-white">Full Description</span>
@@ -184,3 +190,6 @@ const AddBlogs = () => {
 };
 
 export default AddBlogs;
+
+
+//title,image,short_description,category,full_description,author,date_published,source
