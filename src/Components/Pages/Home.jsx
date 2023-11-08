@@ -5,11 +5,13 @@ import { Link, useLoaderData } from "react-router-dom";
 
 import RecentBlog from "./RecentBlog";
 
+
+
 const Home = () => {
   const loads = useLoaderData();
- 
-
   
+  
+
 
   //title, image, short description, category, details button and wishlist button
   return (
@@ -69,7 +71,23 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        {/* right */}
+        <div className="flex shadow-2xl  text-center flex-row my-4 lg:flex-col">
+          <h1 className="text-4xl my-4 ">Lets Start Make A Good World </h1>
+          <div className="my-5 mx-16 p-4 text-justify">
+         {loads.slice(0,3).map((load) => (
+            <div className="card gap-5" key={load._id} >
+              <div >
+              <h1>{load.title}</h1>
+              <p>{load.full_description}</p>
+              </div>
+            
+           
+            </div>
+            
+          ))}
+          <h1 className="text-end">-Mr.Rahman</h1>
+          </div>
+        </div>
       </div>
     </div>
   );
