@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar&&Footer/Navbar";
 import Contain from "../Hooks/UI/Contain";
 import useAuth from "../Hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -28,7 +28,7 @@ const BlogDetails = () => {
   } = loadData;
 const commentsButton=(e)=>{
   e.preventDefault()
-  const allInform ={userName,userPhoto,comments}
+  const allInform ={userName,userPhoto,comments,title}
  axios.post('http://localhost:5000/comments',allInform)
  .then(res=>{
   if(res.data){
@@ -40,7 +40,18 @@ const commentsButton=(e)=>{
       })}
  })
 }
+const [comment,setComment]=useState()
+console.log(comment)
 
+useEffect(()=>{
+ axios.get('http://localhost:5000/comments')
+ .then(res=>{
+  const data=res.data
+  const fil= data?.filter(data=>data.title==title)
+  setComment(fil)
+  console.log(title);
+ })
+},[title])
   return (
    <Contain>
     <Navbar></Navbar>
@@ -79,6 +90,17 @@ const commentsButton=(e)=>{
      </div>
     
    </div>
+  
+   <p className="text-2xl mx-5 my-5">Comment here What you want to say </p>
+   {/* {
+    comment.map(com=><div key={com._id}>
+    <div>
+      <img src={com.userPhoto} alt="" />
+    </div>
+    </div>)
+   } */}
+
+
    {currentUser===userEmail?<>
    <div>
     <h1>Comments</h1>
@@ -86,7 +108,7 @@ const commentsButton=(e)=>{
    </>:<>
    <div className=" card rounded-sm shadow-xl mb-20">
     
-    <p className="text-2xl mx-5 my-5">Comment here What you want to say </p>
+    
     <div className="flex flex-row justify-between">
   <div>
   </div>

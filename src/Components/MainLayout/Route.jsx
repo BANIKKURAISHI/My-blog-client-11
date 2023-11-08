@@ -81,7 +81,7 @@ element:<Login></Login>
  {
      path:'/featuredBlogs',
      element:<Feature></Feature>,
-     loader:()=>fetch('http://localhost:5000/details')
+     
 }
 
 
