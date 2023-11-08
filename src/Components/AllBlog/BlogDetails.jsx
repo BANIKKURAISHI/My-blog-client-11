@@ -41,7 +41,7 @@ const commentsButton=(e)=>{
  })
 }
 const [comment,setComment]=useState()
-console.log(comment)
+
 
 useEffect(()=>{
  axios.get('http://localhost:5000/comments')
@@ -90,31 +90,42 @@ useEffect(()=>{
      </div>
     
    </div>
-  
-   <p className="text-2xl mx-5 my-5">Comment here What you want to say </p>
-   {/* {
-    comment.map(com=><div key={com._id}>
-    <div>
-      <img src={com.userPhoto} alt="" />
+    
+    <p className="text-2xl mx-5 my-5">All Comments</p>
+    {
+    comment?.map(com=><div key={com._id}>
+     <div className="flex flex-col mx-5">
+      <div className="flex flex-col">
+        <div className="flex flex-row  w-1/3">
+      <img className="w-10 h-10 rounded-full" src={com.userPhoto} alt="" />
+      <h1 className="my-2 mx-2 text-lg font-semibold">{com.userName}</h1>
+      </div>
+      <h1 className="w-2/3  my-2 mx-12">
+      {com.comments}
+      </h1>
+      </div>
+      
+
     </div>
+    
     </div>)
-   } */}
+   } 
 
 
    {currentUser===userEmail?<>
    <div>
-    <h1>Comments</h1>
+   
    </div>
    </>:<>
    <div className=" card rounded-sm shadow-xl mb-20">
     
     
-    <div className="flex flex-row justify-between">
+  <div className="">
   <div>
   </div>
-  <form onSubmit={commentsButton} className="flex flex-col mb-5">
-        <textarea onBlur={(e)=>{setComments(e.target.value)}} className="border-2 mx-20 " name="comments" id="" cols="60" rows="10"></textarea>
-        <button className="btn w-96 mx-32 btn-sm btn-outline btn-ghost">Comment</button>
+  <form onSubmit={commentsButton} className="flex flex-col">
+        <textarea onBlur={(e)=>{setComments(e.target.value)}} className="border-2 " name="comments" id="" cols="60" rows="10"></textarea>
+        <button className="btn shadow-2xl btn-sm btn-outline btn-info">Comment</button>
   </form>
    </div>
    </div>

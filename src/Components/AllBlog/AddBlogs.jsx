@@ -4,11 +4,11 @@ import Navbar from "../Navbar&&Footer/Navbar";
 
 import axios from "axios";
 import Swal from "sweetalert2";
-//import {useLoaderData } from "react-router-dom";
+import {useLoaderData } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 const AddBlogs = () => {
- // const data=useLoaderData()
+  const data=useLoaderData()
 //title,image,short_description,category,full_description,author,date_published,source
  const [title,setTitle]=useState()
  const [image,setImage]=useState()
@@ -104,12 +104,12 @@ const AddBlogs = () => {
                   required
                 />
               </div>
-            <label className="label">
+             <label className="label">
             <span className="label-text text-white">Category</span>
             </label>
-            <input name="category"  required onBlur={(e)=>{setCategory(e.target.value)}} type="text" className="input input-bordered" />
+            {/*<input name="category"  required onBlur={(e)=>{setCategory(e.target.value)}} type="text" className="input input-bordered" /> */}
              
-            {/* <select  className="input input-bordered"
+             <select  className="input input-bordered"
              onBlur={(e)=>{setCategory(e.target.value)}}
              required
              name="" id="">
@@ -118,7 +118,7 @@ const AddBlogs = () => {
                   {category.category}
                 </option>)
               }
-            </select>  */}
+            </select>  
              <div className="form-control text-xl font-normal">
                 <label className="label">
                   <span className="label-text text-white">Full Description</span>
