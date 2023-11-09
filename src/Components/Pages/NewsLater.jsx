@@ -22,7 +22,7 @@ const NewsLater = () => {
         </div>
         <form onSubmit={thankYou} className="text-center my-4">
         <input type="text" placeholder="Type here your email" className="p-3 text-black  mr-2 rounded-md w-full max-w-xs" />   
-        <input type="submit" className="btn btn-outline text-white" value="Subscribe" />
+        <input type="submit" className="btn btn-outline text-white my-2 lg:my-0" value="Subscribe" />
         </form>
         </div>
     );

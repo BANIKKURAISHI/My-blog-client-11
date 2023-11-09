@@ -59,7 +59,7 @@ const AddBlogs = () => {
         <div className="hero min-h-screen bg-blue-500 ">
         <div className="hero-content flex-col ">
          
-         <div className="card flex-shrink-0 w-96   font-bold lg:w-[800px] ">
+         <div className="card  flex-shrink-0 w-96   font-bold lg:w-[800px] ">
         <div className="mx-6 lg:mt-8">
             <h1 className="text-5xl text-white font-bold">ADD YOUR BLOG</h1>
           </div>

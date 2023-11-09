@@ -28,6 +28,7 @@ const RecentBlog = ({load}) => {
 }
     return (
         <div>
+         
             <div className="card w-80  h-96 my-10 bg-base-100 shadow-xl lg:w-96">
                 <figure>
                   <img
@@ -50,6 +51,8 @@ const RecentBlog = ({load}) => {
                   </div>
                 </div>
               </div> 
+
+             
         </div>
     );
 };

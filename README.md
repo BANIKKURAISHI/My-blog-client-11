@@ -7,7 +7,8 @@
 <li>You add a blog wishlist for next time reading</li>
 <li>You can remove a blog form wish list </li>
 <li>Home page show last 6 blog which you added</li>
-<li>Every user can comment your blog but you cant do it but you will do it another blog</li>
+<li>Every user can comment your blog but you cant do it but you will do it another user blog</li>
 <li>You can update only your blog</li>
-<li>You should give valid password</li>
+<li>You should give valid password when you create account</li>
+<li></li>
 <li>Thanks</li>

@@ -11,6 +11,7 @@ const Login = () => {
   const {googleButton,login}=useAuth()
   const [email,setEmail]=useState()
   const [password,setPassword]=useState()
+
 ///google log in button 
 const googleLoginButton=()=>{
   googleButton()
@@ -33,9 +34,11 @@ const loginButton=async(e)=>{
     }
     catch(error){
       const errorMessage=error.code
+     
       toast(errorMessage)
 
     }
+    
 
 }
 

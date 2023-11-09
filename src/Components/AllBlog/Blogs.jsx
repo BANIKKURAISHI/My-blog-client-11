@@ -51,12 +51,12 @@ const Blogs = ({ load }) => {
   return (
   <Contain>
     
-   <div className="card w-[1200px]  card-side bg-base-100 shadow-md">
+   <div className="card flex flex-col w-[350px] mx-2   card-side bg-base-100 shadow-md lg:w-[1200px]">
         <figure>
           <img
             src={image}
             alt="Movie"
-            className="w-72 h-full  rounded-s-md"
+            className="w-80 my-5  rounded-md h-full  rounded-s-md lg:h-full "
           />
         </figure>
         <div className="card-body  ">
