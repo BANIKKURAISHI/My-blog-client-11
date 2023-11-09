@@ -6,6 +6,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 
 const Registration = () => {
@@ -66,6 +67,9 @@ const Registration = () => {
   }
     return (
         <Contain>
+          <Helmet>
+                <title>News portal | Registration page</title>
+            </Helmet>
         <Navbar></Navbar>
         <div className="flex ">
         <div className="hero min-h-screen ">

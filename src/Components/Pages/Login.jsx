@@ -6,6 +6,7 @@ import useAuth from "../Hooks/useAuth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const {googleButton,login}=useAuth()
@@ -44,6 +45,9 @@ const loginButton=async(e)=>{
 
     return (
       <Contain>
+        <Helmet>
+                <title>News portal | Login page</title>
+            </Helmet>
         <div className="">
           <Navbar></Navbar>
           

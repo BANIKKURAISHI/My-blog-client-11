@@ -4,6 +4,7 @@ import Contain from "../Hooks/UI/Contain";
 import Navbar from "../Navbar&&Footer/Navbar";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
   const data = useLoaderData();
@@ -55,6 +56,9 @@ const Update = () => {
   };
   return (
     <div>
+      <Helmet>
+                <title>News portal | Blogs update</title>
+            </Helmet>
       <Contain>
         <Navbar></Navbar>
         <div>

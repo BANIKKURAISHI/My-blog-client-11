@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MUIDataTable from "mui-datatables";
 import Contain from "../Hooks/UI/Contain";
 import Navbar from "../Navbar&&Footer/Navbar";
+import { Helmet } from "react-helmet-async";
 const Feature = () => {
 
 useEffect(()=>{
@@ -67,6 +68,9 @@ const [records,setRecords]=useState()
     
     return (
       <Contain>
+        <Helmet>
+                <title>News portal | Features page</title>
+            </Helmet>
       <Navbar></Navbar>
       <MUIDataTable
       

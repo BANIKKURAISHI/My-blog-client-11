@@ -5,6 +5,7 @@ import News from "../Pages/News";
 import Contain from "../Hooks/UI/Contain";
 import NewsLater from "../Pages/NewsLater";
 import Footer from "../Navbar&&Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -15,6 +16,9 @@ import Footer from "../Navbar&&Footer/Footer";
 const Main = () => {
     return (
         <div>
+            <Helmet>
+                <title>News portal | Home</title>
+            </Helmet>
             <Navbar></Navbar>
             <Banner></Banner>
             <News></News>

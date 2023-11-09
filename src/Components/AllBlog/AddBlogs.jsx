@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import {useLoaderData } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const AddBlogs = () => {
   const data=useLoaderData()
@@ -54,6 +55,9 @@ const AddBlogs = () => {
 
     return (
         <Contain>
+          <Helmet>
+                <title>News portal | Add Blog</title>
+            </Helmet>
         <Navbar></Navbar>
         <div>
         <div className="hero min-h-screen bg-blue-500 ">

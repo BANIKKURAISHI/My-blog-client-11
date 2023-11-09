@@ -5,6 +5,7 @@ import Navbar from "../Navbar&&Footer/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Contain from "../Hooks/UI/Contain";
+import { Helmet } from "react-helmet-async";
 
 
 const AllBlogs = () => {
@@ -26,6 +27,10 @@ const AllBlogs = () => {
    
     return (
         <div>
+
+           <Helmet>
+                <title>News portal | All Blog</title>
+            </Helmet>
         <Navbar></Navbar>
        
          

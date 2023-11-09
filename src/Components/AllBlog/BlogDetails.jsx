@@ -5,6 +5,7 @@ import useAuth from "../Hooks/useAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetails = () => {
   const loadData = useLoaderData();
@@ -54,6 +55,10 @@ useEffect(()=>{
 },[title])
   return (
    <Contain>
+
+<Helmet>
+                <title>News portal | Blog details {_id}</title>
+            </Helmet>
     <Navbar></Navbar>
 
    

@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 
 
 
+
 const Blogs = ({ load }) => {
     const {user}=useAuth()
     const email=user?.email
@@ -50,7 +51,7 @@ const Blogs = ({ load }) => {
 
   return (
   <Contain>
-    
+   
    <div className="card flex flex-col w-[350px] mx-2   card-side bg-base-100 shadow-md lg:w-[1200px]">
         <figure>
           <img
