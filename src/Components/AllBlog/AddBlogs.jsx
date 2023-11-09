@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import {useLoaderData } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import Footer from "../Navbar&&Footer/Footer";
 
 const AddBlogs = () => {
   const data=useLoaderData()
@@ -189,6 +190,7 @@ const AddBlogs = () => {
         </div>
         </div>
         </div>
+        <Footer></Footer>
         </Contain>
     );
 };

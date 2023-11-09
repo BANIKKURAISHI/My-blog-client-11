@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { PropTypes } from "prop-types";
 import { Helmet } from "react-helmet-async";
 
+
 const WishList = () => {
   const load = useLoaderData();
   const [blogs, setBlogs] = useState([]);
@@ -101,10 +102,12 @@ const WishList = () => {
                   </div>
                 </div>
               </div>
+              
             </Contain>
           </div>
         ))}
       </div>
+      
     </div>
   );
 };

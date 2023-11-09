@@ -5,6 +5,7 @@ import MUIDataTable from "mui-datatables";
 import Contain from "../Hooks/UI/Contain";
 import Navbar from "../Navbar&&Footer/Navbar";
 import { Helmet } from "react-helmet-async";
+import Footer from "../Navbar&&Footer/Footer";
 const Feature = () => {
 
 useEffect(()=>{
@@ -77,7 +78,7 @@ const [records,setRecords]=useState()
       title={"Top 10 Post in our website"}
       data={records}
       columns={columns} />
-    
+     <Footer></Footer>
       </Contain>
    
     
