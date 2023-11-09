@@ -56,7 +56,7 @@ const Blogs = ({ load }) => {
           <img
             src={image}
             alt="Movie"
-            className="w-80 my-5  rounded-md h-full  rounded-s-md lg:h-full "
+            className="w-96 h-96 my-5  rounded-md  lg:h-full "
           />
         </figure>
         <div className="card-body  ">

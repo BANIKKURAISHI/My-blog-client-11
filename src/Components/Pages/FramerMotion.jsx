@@ -31,8 +31,8 @@ const FramerMotion = () => {
     >
    <motion.h3 className="text-center" >SURPRISE</motion.h3>
    {card && (
-    <motion.p style={{
-        width:"670px",
+    <motion.p className="w-[270px] lg:w-[670px]" style={{
+       // width:"670px",
             
     }}
         initial={{opacity:0}}

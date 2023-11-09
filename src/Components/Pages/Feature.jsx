@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // import DataTable from "react-data-table-component";
 import MUIDataTable from "mui-datatables";
+import Contain from "../Hooks/UI/Contain";
+import Navbar from "../Navbar&&Footer/Navbar";
 const Feature = () => {
 
 useEffect(()=>{
@@ -24,11 +26,11 @@ const columns = [
    },
 
   {
-   name: "title",
+   name:"title",
    label: "Title",
    options: {
     filter: true,
-    sort: true,
+    sort: false,
    }
   },
   
@@ -64,12 +66,16 @@ const [records,setRecords]=useState()
       
     
     return (
+      <Contain>
+      <Navbar></Navbar>
       <MUIDataTable
+      
       title={"Top 10 Post in our website"}
       data={records}
-      columns={columns}
-     
-    />
+      columns={columns} />
+    
+      </Contain>
+   
     
     );
 };

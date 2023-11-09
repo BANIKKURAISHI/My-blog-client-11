@@ -61,12 +61,12 @@ const WishList = () => {
         {
             blogs.map(blog=><div key={blog._id}>
            <Contain>
-            <div className="card w-[1270px] my-10  card-side bg-base-100 shadow-md">
-           <figure className='w-2/5'>
+            <div className="card w-80 flex flex-col mx-auto  my-10  card-side bg-base-100 shadow-md lg:w-[1270px]">
+           <figure className=''>
           <img
             src={blog.image}
             alt="Movie"
-            className="w-96 h-full  rounded-s-md"
+            className="w-80 h-80  rounded-md"
           />
         </figure>
         <div className="card-body">

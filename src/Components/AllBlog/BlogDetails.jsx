@@ -57,13 +57,13 @@ useEffect(()=>{
     <Navbar></Navbar>
 
    
-   <div className="card w-[1200px]  mx-auto my-20  card-side bg-base-100 shadow-md">
+   <div className="card flex flex-col  mx-auto my-20  card-side bg-base-100 shadow-md lg:w-[1200px]">
     
      <figure>
        <img
          src={image}
          alt="Movie"
-         className="w-96 h-full  rounded-s-md"
+         className="w-96 h-96  rounded-md"
        />
      </figure>
      <div className="card-body  ">

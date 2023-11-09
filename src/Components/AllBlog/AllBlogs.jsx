@@ -33,14 +33,14 @@ const AllBlogs = () => {
             <div className="bg-indigo-400 py-10">
 
             <div className="flex flex-col mx-auto   lg:mx-80 ">
-            <h1 className="text-5xl mx-4 text-white font-medium  lg:mx-0">Search Your Favorite Blog!</h1>
+            <h1 className="text-5xl mx-12 text-white font-medium  lg:mx-0">Search Your Favorite Blog!</h1>
            </div>
          <div className="mx-auto text-center my-4 ">
             <form  onChange={(e)=>{setSearch(e.target.value)}}>
                 <input placeholder="Enter your title name" className="p-3 text-black bg-white  mr-2 rounded-md w-full max-w-xs" type="text" />
             </form>
          </div>
-         <div className="mx-0 my-4 lg:mx-72 m ">
+         <div className="mx-6 my-4 lg:mx-72  ">
          <button className=" btn glass text-white mt-2 mx-2" onClick={()=>filterButton('Technology')}>Technology</button>
          <button className=" btn glass text-white mt-2 mx-2" onClick={()=>filterButton('Nature')}>Nature</button>
          <button  className="btn glass text-white mt-2 mx-2" onClick={()=>filterButton('Travel')}>Travel</button>

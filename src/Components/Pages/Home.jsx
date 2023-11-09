@@ -25,7 +25,7 @@ const Home = () => {
             </RecentBlog>
           ))}
         </div>
-        <div className="h-[280px]  bg-slate-700 mx-6 my-2 -mr-20 lg:mr-10">
+        <div className="h-[254px]  bg-slate-700 mx-6 my-2 -mr-20 lg:mr-10">
           <FramerMotion></FramerMotion>
         </div>
       </div>
