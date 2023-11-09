@@ -37,7 +37,7 @@ const AddBlogs = () => {
      const add={time,title,image,short_description,category,full_description,author,date_published,source,userName,userEmail,userPhoto}
      console.log(add)
      try {
-    axios.post('http://localhost:5000/blogs',add)
+    axios.post('https://my-blog-server-side.vercel.app/blogs',add)
     .then(res=>{
        if(res.data){
         Swal.fire({

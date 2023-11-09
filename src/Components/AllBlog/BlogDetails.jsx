@@ -29,7 +29,7 @@ const BlogDetails = () => {
 const commentsButton=(e)=>{
   e.preventDefault()
   const allInform ={userName,userPhoto,comments,title}
- axios.post('http://localhost:5000/comments',allInform)
+ axios.post('https://my-blog-server-side.vercel.app/comments',allInform)
  .then(res=>{
   if(res.data){
     Swal.fire({
@@ -44,7 +44,7 @@ const [comment,setComment]=useState()
 
 
 useEffect(()=>{
- axios.get('http://localhost:5000/comments')
+ axios.get('https://my-blog-server-side.vercel.app/comments')
  .then(res=>{
   const data=res.data
   const fil= data?.filter(data=>data.title==title)
@@ -91,7 +91,7 @@ useEffect(()=>{
     
    </div>
     
-    <p className="text-2xl mx-5 my-5">All Comments</p>
+    <p className="text-2xl font-semibold mx-5 my-5">All Comments</p>
     {
     comment?.map(com=><div key={com._id}>
      <div className="flex flex-col mx-5">
@@ -113,8 +113,8 @@ useEffect(()=>{
 
 
    {currentUser===userEmail?<>
-   <div>
-   
+   <div className="bg-base-300  mx-auto">
+   <h1 className="text-center p-2 text-xl font-semibold">Can not comment on own blog</h1>
    </div>
    </>:<>
    <div className=" card rounded-sm shadow-xl mb-20">

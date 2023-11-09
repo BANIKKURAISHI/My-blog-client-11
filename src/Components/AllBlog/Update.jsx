@@ -41,7 +41,7 @@ const Update = () => {
       date_published,
       source,
     };
-    axios.patch(`http://localhost:5000/blogs/${_id}`, add).then((res) => {
+    axios.patch(`https://my-blog-server-side.vercel.app/blogs/${_id}`, add).then((res) => {
       console.log(res.data);
       if (res?.data?.modifiedCount > 0) {
         Swal.fire({

@@ -1,6 +1,6 @@
 import axios from "axios";
 const instance=axios.create({
-    baseURL:'http://localhost:5000',
+    baseURL:'https://my-blog-server-side.vercel.app',
     withCredentials:true
 })
 

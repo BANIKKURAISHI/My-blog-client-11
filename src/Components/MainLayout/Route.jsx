@@ -20,6 +20,7 @@ import Feature from "../Pages/Feature";
 
 
 
+
 const myCreateRoute=createBrowserRouter([{
 path:"/",
 element:<Main></Main>,
@@ -27,7 +28,7 @@ errorElement:<Error></Error>,
 children:[{
     index:true,
     element:<Home></Home>,
-    loader:()=>fetch('http://localhost:5000/blog')
+    loader:()=>fetch('https://my-blog-server-side.vercel.app/blog')
 },
 
 
@@ -50,32 +51,32 @@ element:<Login></Login>
 {
     path:'/allBlogs',
     element:<AllBlogs></AllBlogs>,
-    loader:()=>fetch('http://localhost:5000/blogs')
+    loader:()=>fetch('https://my-blog-server-side.vercel.app/blogs')
 },
 {
     path:'/addBlog',
     element:<AddBlogs></AddBlogs>,
-    loader:()=>fetch('http://localhost:5000/blogs')
+    loader:()=>fetch('https://my-blog-server-side.vercel.app/blogs')
 },
 {
     path:'/blogs/:id',
     element:<BlogDetails></BlogDetails>,
-    loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+    loader:({params})=>fetch(`https://my-blog-server-side.vercel.app/blogs/${params.id}`)
 },
  {
     path:'/all/:category',
     element:<Category></Category>,
-    loader:({params})=>fetch(`http://localhost:5000/all/${params.category}`)
+    loader:({params})=>fetch(`https://my-blog-server-side.vercel.app/all/${params.category}`)
 },
 {
     path:'/wishlist',
     element:<Privet><WishList></WishList></Privet>,
-    loader:()=>fetch('http://localhost:5000/popular')
+    loader:()=>fetch('https://my-blog-server-side.vercel.app/popular')
 },
 {
     path:'/update/:id',
     element:<Privet><Update></Update></Privet>,
-    loader:({params})=>fetch(`http://localhost:5000/blogs/${params.id}`)
+    loader:({params})=>fetch(`https://my-blog-server-side.vercel.app/blogs/${params.id}`)
 },
 
  {
@@ -83,6 +84,9 @@ element:<Login></Login>
      element:<Feature></Feature>,
      
 }
+
+   
+
 
 
 ])

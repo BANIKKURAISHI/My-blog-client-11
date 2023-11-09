@@ -1,8 +1,13 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<li>Assignment_ID: assignment_category_0006</li>
+<li> https://blog-side.web.app</li>
+<li>I want to add my features</li>
+<li>Firstly navbar has some routes and they are working</li>
+<li>You can create account and login and a extra log in page</li>
+<li>You can add blog </li>
+<li>You add a blog wishlist for next time reading</li>
+<li>You can remove a blog form wish list </li>
+<li>Home page show last 6 blog which you added</li>
+<li>Every user can comment your blog but you cant do it but you will do it another blog</li>
+<li>You can update only your blog</li>
+<li>You should give valid password</li>
+<li>Thanks</li>

@@ -30,7 +30,7 @@ const Blogs = ({ load }) => {
   
  
     const list ={email, title, image,short_description,full_description,category, author,date_published}
-   try{ axios.post('http://localhost:5000/popular',list)
+   try{ axios.post('https://my-blog-server-side.vercel.app/popular',list)
    .then(res=>{
     if(res.data){
      Swal.fire({

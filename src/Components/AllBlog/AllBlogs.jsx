@@ -14,7 +14,7 @@ const AllBlogs = () => {
     const [search,setSearch]=useState('')
     const [fil,setFil]=useState(loadData)
     useEffect(()=>{
-     axios.get(`http://localhost:5000/all/${category}`)
+     axios.get(`https://my-blog-server-side.vercel.app/all/${category}`)
    .then(res=>{setCats(res.data)
     console.log(cats)})
     },[category,cats])

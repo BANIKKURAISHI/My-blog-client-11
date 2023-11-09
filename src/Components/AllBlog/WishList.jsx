@@ -1,5 +1,5 @@
 
-import { Link, useLoaderData } from 'react-router-dom';
+import {  useLoaderData } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import { useEffect, useState } from 'react';
 import Contain from '../Hooks/UI/Contain';
@@ -32,7 +32,7 @@ const WishList = () => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed){
-        axios.delete(`http://localhost:5000/popular/${id}`)
+        axios.delete(`https://my-blog-server-side.vercel.app/popular/${id}`)
         .then(res=>{
             console.log(res.data)
             if(res?.data?.deletedCount>0){
@@ -85,7 +85,7 @@ const WishList = () => {
             
              </div>
            <div className="card-actions justify-end">
-           <Link to={`/popular/${blog._id}`}><button className="btn btn-outline btn-info">DETAILS</button></Link>  
+           <button className="btn btn-outline btn-info">DETAILS</button> 
            <button onClick={()=>deleteWishListButton(blog._id)} className="btn btn-outline btn-info">REMOVE</button> 
           
           </div>

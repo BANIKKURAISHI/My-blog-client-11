@@ -6,7 +6,7 @@ const Feature = () => {
 
 useEffect(()=>{
    const fetData=async()=> {
-    axios.get('http://localhost:5000/details')
+    axios.get('https://my-blog-server-side.vercel.app/details')
     .then(res=>setRecords(res.data))
     .catch(err=>console.log(err))
    }
